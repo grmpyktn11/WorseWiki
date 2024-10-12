@@ -1,0 +1,18 @@
+from flask import Flask, jsonify, request
+import wikipedia
+import re
+from flask_cors import CORS
+import wikipedia_functions
+
+app = Flask(__name__)
+CORS(app) 
+
+# API endpoint to handle search
+@app.route("/get-search/<search_term>")
+def return_search(search_term):
+    top_five_results = wikipedia_functions.get_search_results(search_term)
+    return jsonify(top_five_results), 200
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
