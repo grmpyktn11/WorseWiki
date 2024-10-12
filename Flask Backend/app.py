@@ -17,7 +17,7 @@ def get_search_results(search_term):
 def get_content(requested_title):
     title = wikipedia_functions.get_title(requested_title) #String title
     if not title:
-        return jsonify({"error" : "Title not found"}), 404
+        return jsonify(None), 404
     section_titles = wikipedia_functions.get_section_titles(requested_title) #List of section titles
     sections= wikipedia_functions.get_sections_content(requested_title) # dictionary of section title : content
     summary = wikipedia_functions.get_summary(title)
