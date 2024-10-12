@@ -1,6 +1,6 @@
 import wikipedia
 import re
-
+from flask import jsonify
 # Returns a list of the top 5 articles under a name
 def get_search_results(name):
     results = wikipedia.search(name, results=5)
@@ -23,7 +23,7 @@ def get_summary(title):
         return None
 
 # Given an EXACT name, returns a dictionary of section titles and content
-def get_sections(title):
+def get_sections_content(title):
     try:
         page_object = wikipedia.page(title, auto_suggest=False)
         sections = re.split(r'== (.*?) ==', page_object.content)
@@ -38,18 +38,28 @@ def get_sections(title):
 
     except Exception as e:
         return None
+def get_section_titles(title):
+    try:
+        page_object = wikipedia.page(title, auto_suggest=False)
+        sections = re.split(r'== (.*?) ==', page_object.content)
+        section_titles = []
+        for i in range(1, len(sections), 2):
+            section_title = sections[i].strip().replace('=', '').strip()  # Clean title
+            section_titles.append(section_title)
 
+        return section_titles  
+    except Exception as e:
+        return None
+
+
+    
 # # Main execution
 # title = input("What would you like to look up? ")
-
 # search_results = get_search_results(title)
-# if search_results:
-#     for result in search_results:
-#         print(result)  # Print all search results
-    
-#     topHit = search_results[0]  # Automatically selecting the first result
-#     print(get_title(topHit))     # Print the title
-    
+# topHit = search_results[0]  # Automatically selecting the first result
+# print(get_section_titles(topHit))     
+# print(get_sections_content(topHit))
+
 #     summary = get_summary(topHit)  # Get summary
 #     if summary:
 #         print("Summary:")
