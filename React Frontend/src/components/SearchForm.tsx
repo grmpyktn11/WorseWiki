@@ -7,7 +7,6 @@ const SearchForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`Searching for: ${query}`);
     navigate({
       pathname: '/search',
       search: `?${createSearchParams({title: query})}`,

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useSearchParams, useNavigate } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import Loading from "../components/Loading"
 import ErrorWithForm from "../components/ErrorWithForm"
@@ -26,7 +26,6 @@ const fakeData = [
 ]
 
 const Search = () => {
-  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
   const { isLoading, error, data } = useQuery({
@@ -58,7 +57,7 @@ const Search = () => {
       {fakeData.length > 0 && 
       (
         <div className="flex justify-between h-screen items-center">
-          <Link to="/content" className="hover:scale-105">
+          <Link to={`/article/${fakeData[0].title.split(' ').join('_')}`} className="hover:scale-105">
             <div className="relative inline-block w-96 ml-20">
               <img src={StickyNote} alt="main_article"/>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[6deg] w-8/12">
@@ -78,7 +77,7 @@ const Search = () => {
           (
             <div className="grid grid-cols-2 grid-rows-2 gap-4 p-4">
               {fakeData.slice(1).map((item, index) => (
-                <Link to="/content" className="hover:scale-105">
+                <Link to={`/article/${fakeData[index+1].title.split(' ').join('_')}`} className="hover:scale-105">
                   <div key={item.title} className="relative inline-block w-64">
                     <img src={StickyNoteStraight} alt="sub_article"/>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9/12">
