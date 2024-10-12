@@ -11,6 +11,7 @@ export default {
         'fly-2': 'fly 3.5s ease-in-out infinite',
         'fly-3': 'fly 4s ease-in-out infinite',
         'fly-4': 'fly 4.5s ease-in-out infinite',
+        'fading': 'fading 1.5s ease-in-out infinite',
       },
       keyframes: {
         'fly': {
@@ -21,7 +22,18 @@ export default {
             transform: 'translateY(-10px)',
           },
         },
-      }
+        'fading': {
+          '0%, 100%': {
+            opacity: 1,
+          },
+          '50%': {
+            opacity: 0.7,
+          },
+        }
+      },
+      backgroundImage: {
+        'main': "url('./src/images/background.jpg')",
+      },
     },
   },
   plugins: [
