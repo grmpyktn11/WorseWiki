@@ -12,6 +12,7 @@ export default {
         'fly-3': 'fly 4s ease-in-out infinite',
         'fly-4': 'fly 4.5s ease-in-out infinite',
         'fading': 'fading 1.5s ease-in-out infinite',
+        'slide-left': 'slide-left 1.5s ease-in-out',
       },
       keyframes: {
         'fly': {
@@ -28,6 +29,14 @@ export default {
           },
           '50%': {
             opacity: 0.7,
+          },
+        },
+        'slide-left': {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(-10px)',
           },
         }
       },
