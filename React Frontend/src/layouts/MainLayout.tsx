@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom"
+import { Toaster } from 'sonner'
 
 const MainLayout = () => {
   return (
-    <div className="h-screen w-screen bg-gradient-to-tr from-neutral-200 to-neutral-400">
-      <Outlet />
-    </div>
+    <>
+      <Toaster />
+      <div className="h-screen w-screen bg-main">
+        <Outlet />
+      </div>
+    </>
   )
 }
 
