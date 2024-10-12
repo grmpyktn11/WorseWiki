@@ -53,19 +53,8 @@ def get_section_titles(title):
 
 
     
-# # Main execution
+# # # Main execution
 # title = input("What would you like to look up? ")
 # search_results = get_search_results(title)
 # topHit = search_results[0]  # Automatically selecting the first result
 # print(get_section_titles(topHit))     
-# print(get_sections_content(topHit))
-
-#     summary = get_summary(topHit)  # Get summary
-#     if summary:
-#         print("Summary:")
-#         print(summary)  # Print the summary
-    
-#     sections_info = get_sections(topHit)  # Get sections
-#     if sections_info:
-#         print("Sections Info:")
-#         print(sections_info)  # Print sections dictionary
