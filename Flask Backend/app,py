@@ -20,13 +20,15 @@ def get_content(requested_title):
         return jsonify({"error" : "Title not found"}), 404
     section_titles = wikipedia_functions.get_section_titles(requested_title) #List of section titles
     sections= wikipedia_functions.get_sections_content(requested_title) # dictionary of section title : content
-
+    summary = wikipedia_functions.get_summary(title)
     page_info = {
         "title" : title,
+        "summary" : summary,
         "section_titles" : section_titles,
         "sections" : sections
     }
     return jsonify(page_info), 200
+
 
 
 if __name__ == '__main__':
