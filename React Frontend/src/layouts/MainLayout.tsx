@@ -5,7 +5,7 @@ const MainLayout = () => {
   return (
     <>
       <Toaster />
-      <div className="h-screen w-screen bg-main">
+      <div className="h-full w-screen bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500">
         <Outlet />
       </div>
     </>
