@@ -17,10 +17,10 @@ const Home = () => {
             <div className="chat-bubble chat-bubble-accent">Ever doubt Wikipedia? Stop doubting!</div>
           </div>
           <div className="absolute w-96 bottom-4 right-48 chat chat-end animate-fly-3">
-            <div className="chat-bubble chat-bubble-accent">What kind of nonsense is this</div>
+            <div className="chat-bubble chat-bubble-accent">We only support English, ain't translating allat</div>
           </div>
           <div className="absolute w-96 bottom-36 left-36 chat chat-start animate-fly-4">
-            <div className="chat-bubble chat-bubble-accent">#1 wiki fact checker, according to dentist</div>
+            <div className="chat-bubble chat-bubble-accent">#1 Wiki Fact Checker, according to 9/10 dentist</div>
           </div>
           <div className="absolute w-96 bottom-8 left-52 chat chat-start animate-fly-2">
             <div className="chat-bubble chat-bubble-accent">Totally No Cap</div>
