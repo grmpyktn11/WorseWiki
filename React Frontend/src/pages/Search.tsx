@@ -24,16 +24,11 @@ const Search = () => {
       }),
     enabled: !!searchParams.get('title'),
   })
-
-  if (isLoading || isFetching) return (
-    <Loading loadingText="Fetching Knowledge..." />
-  )
-
-  if (error) return (
-    <ErrorWithForm errorText="An error has occurred... Try again?" />
-  )
   
-  return (
+  return (isLoading || isFetching) ? (
+    <Loading loadingText="Fetching Knowledge..." />
+  ) : (error) ? ( <ErrorWithForm errorText="An error has occurred... Try again?" /> ) : 
+  (
     <div className="px-12">
       {/* Back button */}
       <Link to="/">
