@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
-import Loading from "../components/Loading"
+import { useParams } from "react-router-dom"
 import ErrorWithForm from "../components/ErrorWithForm"
+import Loading from "../components/Loading"
 
 const Content = () => {
   const { title } = useParams()
@@ -30,6 +30,7 @@ const Content = () => {
     <ErrorWithForm errorText="An error has occurred... Try again?" />
   )
 
+  console.log(data)
   return (
     
     <div className="max-w-4xl mx-auto px-4 py-8">
