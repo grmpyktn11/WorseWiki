@@ -1,10 +1,10 @@
 import key
 import openai
-client = OpenAI(api_key=key.apiKey)
+client = openai.OpenAI(api_key=key.apiKey)
 def get_chatgpt_response(prompt):
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "user", "content": prompt}
             ]
