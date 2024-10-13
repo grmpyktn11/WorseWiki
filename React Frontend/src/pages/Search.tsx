@@ -4,11 +4,12 @@ import ErrorWithForm from "../components/ErrorWithForm"
 import Loading from "../components/Loading"
 import StickyNote from "../images/sticky_note.png"
 import StickyNoteStraight from "../images/sticky_note_straight.png"
+import Star from "../images/star.gif"
 
 const Search = () => {
   const [searchParams] = useSearchParams()
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, isFetching, error, data } = useQuery({
     queryKey: ['repoData', searchParams.get('title')],
     queryFn: () =>
       fetch(`http://127.0.0.1:5000/get-search/${searchParams.get('title')}`).then((res) =>
@@ -24,7 +25,7 @@ const Search = () => {
     enabled: !!searchParams.get('title'),
   })
 
-  if (isLoading) return (
+  if (isLoading || isFetching) return (
     <Loading loadingText="Fetching Knowledge..." />
   )
 
@@ -36,8 +37,8 @@ const Search = () => {
     <div className="px-12">
       {/* Back button */}
       <Link to="/">
-        <div className="absolute top-10 left-10">
-          <button className="btn btn-active btn-accent">Back</button>
+        <div className="absolute top-10 left-10 animate-slide-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 512 512"><path fill="none" stroke="yellow" strokeLinecap="round" strokeLinejoin="round" strokeWidth="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
         </div>
       </Link>
 
@@ -49,7 +50,7 @@ const Search = () => {
             <div className="relative inline-block w-96 ml-20">
               <img src={StickyNote} alt="main_article"/>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[6deg] w-8/12">
-                <div className="text-black text-2xl font-bold line-clamp-2">
+                <div className="text-black text-5xl text-center font-bold">
                   {data[0]}
                 </div>
                 {/* <hr className="border-1 border-black my-4 w-8/12"/>
@@ -57,6 +58,7 @@ const Search = () => {
                   {fakeData[0].content}
                 </div> */}
               </div>
+              <img src={Star} alt="top-result" className="absolute w-32 -top-12 right-0 "/>
             </div>
           </Link>
 
@@ -69,7 +71,7 @@ const Search = () => {
                   <div className="relative inline-block w-64">
                     <img src={StickyNoteStraight} alt="sub_article"/>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9/12">
-                      <div className="text-black text-md font-bold line-clamp-2">
+                      <div className="text-black text-2xl font-bold text-center">
                         {item}
                       </div>
                       {/* <hr className="border-1 border-black my-2 w-8/12"/>
