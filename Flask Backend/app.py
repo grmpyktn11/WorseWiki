@@ -3,11 +3,12 @@ import wikipedia
 import re
 from flask_cors import CORS
 import wikipedia_functions
+import key
 
 app = Flask(__name__)
 CORS(app) 
 
-# API endpoint to handle search
+# API endpoint to handle searchvi
 @app.route("/get-search/<search_term>")
 def get_search_results(search_term):
     top_five_results = wikipedia_functions.get_search_results(search_term)
