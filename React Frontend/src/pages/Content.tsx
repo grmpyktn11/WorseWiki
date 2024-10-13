@@ -24,15 +24,10 @@ const Content = () => {
     enabled: !!title,
   })
 
-  if (isLoading || isFetching) return (
+  return (isLoading || isFetching) ? (
     <Loading loadingText="Fetching Knowledge..." />
-  )
-
-  if (error) return (
-    <ErrorWithForm errorText="An error has occurred... Try again?" />
-  )
-
-  return (
+  ) : (error) ? ( <ErrorWithForm errorText="An error has occurred... Try again?" /> ) : 
+  (
     <div className="px-12">
       <div onClick={() => navigate(-1)}>
         <div className="absolute top-10 left-10 animate-slide-left hover:cursor-pointer">
@@ -41,15 +36,15 @@ const Content = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{data.title}</h1>
-          <p className="text-lg text-gray-600 whitespace-pre-line">{data.summary}</p>
+          <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{data?.title}</h1>
+          <p className="text-lg text-gray-600 whitespace-pre-line">{data?.summary}</p>
         </div>
 
         <div className="space-y-8">
-          {data.section_titles.map((title: string, index: number) => (
+          {data?.section_titles.map((title: string, index: number) => (
             <div key={index} className="bg-white shadow-md rounded-lg p-6">
               <h2 className="text-2xl font-semibold text-gray-700 mb-4">{title}</h2>
-              <p className="text-gray-600 leading-relaxed whitespace-pre-line">{data.sections[title]}</p>
+              <p className="text-gray-600 leading-relaxed whitespace-pre-line">{data?.sections[title]}</p>
             </div>
           ))}
         </div>
